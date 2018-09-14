@@ -207,7 +207,15 @@ namespace NetBase.Extensions
 
 		public static string SubstringSafe(this string s, int startIndex, int length)
 		{
-			return s.Substring(Math.Min(startIndex, s.Length), Math.Min(length, Math.Max(0, s.Length - startIndex)));
+			return s.Substring(Math.Min(startIndex, s.Length), Math.Min(Math.Max(0, length), Math.Max(0, s.Length - startIndex)));
+		}
+
+		public static string Repeat(this string s, int amount)
+		{
+			StringBuilder sb = new StringBuilder();
+			for (int i = 0; i < amount; i++)
+				sb.Append(s);
+			return sb.ToString();
 		}
 	}
 }
