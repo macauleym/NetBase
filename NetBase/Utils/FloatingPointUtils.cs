@@ -55,5 +55,10 @@ namespace NetBase.Utils
 
 			return int.Parse(d[pos].ToString());
 		}
+
+		public static string ToHourString(float hours)
+		{
+			return $"{Math.Floor(hours)}:{(hours % 1 * 60).ToString("00")}";
+		}
 	}
 }
