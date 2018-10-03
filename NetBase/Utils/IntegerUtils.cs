@@ -173,5 +173,19 @@ namespace NetBase.Utils
 
 			return true;
 		}
+
+		public static int Factorial(int i)
+		{
+			if (i <= 1)
+				return 1;
+			return i * Factorial(i - 1);
+		}
+
+		public static long Factorial(long i)
+		{
+			if (i <= 1)
+				return 1;
+			return i * Factorial(i - 1);
+		}
 	}
 }
