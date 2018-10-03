@@ -217,5 +217,16 @@ namespace NetBase.Extensions
 				sb.Append(s);
 			return sb.ToString();
 		}
+
+		public static IEnumerable<int> AllIndicesOf(this string s, string substring)
+		{
+			for (int i = 0; ; i += substring.Length)
+			{
+				i = s.IndexOf(substring, i);
+				if (i == -1)
+					break;
+				yield return i;
+			}
+		}
 	}
 }
