@@ -53,10 +53,10 @@ namespace NetBase.Utils
 			Console.SetCursorPosition(0, currentLineCursor - offset);
 		}
 
-		public static void WriteBanner(string name, int paddingHor, int paddingVer, char border, ConsoleColor background, ConsoleColor foreGround)
+		public static void WriteBanner(string name, int paddingHor, int paddingVer, char border, ConsoleColor background, ConsoleColor foreground)
 		{
 			Console.BackgroundColor = background;
-			Console.ForegroundColor = foreGround;
+			Console.ForegroundColor = foreground;
 			for (int i = 0; i < paddingVer * 2 + 1; i++)
 			{
 				if (i == 0 || i == paddingVer * 2)
