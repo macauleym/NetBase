@@ -1,9 +1,9 @@
-﻿using System;
+﻿using NetBase.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Text.RegularExpressions;
-using NetBase.Utils;
 
 namespace NetBase.Extensions
 {
@@ -227,6 +227,32 @@ namespace NetBase.Extensions
 					break;
 				yield return i;
 			}
+		}
+
+		public static string ChopOffAfter(this string str, int count, string substr)
+		{
+			return str.Substring(0, RepeatedIndexOf(str, count, substr) + 1);
+		}
+
+		public static string ChopOffAt(this string str, int count, string substr)
+		{
+			return str.Substring(0, RepeatedIndexOf(str, count, substr));
+		}
+
+		private static int RepeatedIndexOf(string str, int count, string substr)
+		{
+			int index = 0;
+			do
+			{
+				index = str.IndexOf(substr, index);
+				if (index < 0)
+					return index;
+				index++;
+				count--;
+			}
+			while (count > 0);
+
+			return index - 1;
 		}
 	}
 }
