@@ -43,14 +43,11 @@ namespace NetBase.Utils
 
 		public static MemberInfo GetMemberInfoByName<T>(string memberName, bool caseSensitive = true)
 		{
-			foreach (FieldInfo field in typeof(T).GetFields())
-				if (field.Name == memberName || (!caseSensitive && field.Name.ToLower() == memberName.ToLower()))
-					return field;
-			foreach (PropertyInfo property in typeof(T).GetProperties())
-				if (property.Name == memberName || (!caseSensitive && property.Name.ToLower() == memberName.ToLower()))
-					return property;
+			foreach (MemberInfo member in typeof(T).GetMembers())
+				if (member.Name == memberName || (!caseSensitive && member.Name.ToLower() == memberName.ToLower()))
+					return member;
 
-			throw new Exception($"Member {memberName} not found in type {nameof(T)}");
+			throw new Exception($"Member {memberName} not found in type {typeof(T)}");
 		}
 	}
 }
