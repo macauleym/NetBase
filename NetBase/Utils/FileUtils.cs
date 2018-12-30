@@ -47,12 +47,17 @@ namespace NetBase.Utils
 
 		public static void CreateText(string fileName, string contents)
 		{
+			CreateText(fileName, contents, Encoding.Default);
+		}
+
+		public static void CreateText(string fileName, string contents, Encoding encoding)
+		{
 			string directory = Path.GetDirectoryName(fileName);
 			if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
 				Directory.CreateDirectory(directory);
 
 			using (FileStream fout = new FileStream(fileName, FileMode.Create))
-			using (StreamWriter sout = new StreamWriter(fout))
+			using (StreamWriter sout = new StreamWriter(fout, encoding))
 			{
 				sout.Write(contents);
 			}
