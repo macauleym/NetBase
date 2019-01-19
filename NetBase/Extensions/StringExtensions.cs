@@ -254,5 +254,15 @@ namespace NetBase.Extensions
 
 			return index - 1;
 		}
+
+		public static int CountOccurrences(this string str, char occurrence)
+		{
+			return str.Split(occurrence).Length - 1;
+		}
+
+		public static int CountOccurrences(this string str, string occurrence)
+		{
+			return (str.Length - str.Replace(occurrence, string.Empty).Length) / occurrence.Length;
+		}
 	}
 }
