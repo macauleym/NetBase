@@ -4,6 +4,11 @@ namespace NetBase.Utils
 {
 	public static class MathUtils
 	{
+		public static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
+		{
+			return (value.CompareTo(min) < 0) ? min : (value.CompareTo(max) > 0) ? max : value;
+		}
+
 		public static double Pythagoras(double a, double b)
 		{
 			return Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));

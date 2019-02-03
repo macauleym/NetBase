@@ -5,16 +5,6 @@ namespace NetBase.Utils
 {
 	public static class IntegerUtils
 	{
-		public static int Clamp(int value, int min, int max)
-		{
-			return (value < min) ? min : (value > max) ? max : value;
-		}
-
-		public static long Clamp(long value, long min, long max)
-		{
-			return (value < min) ? min : (value > max) ? max : value;
-		}
-
 		public static List<int> PowersOfTwo(int exponent)
 		{
 			List<int> list = new List<int> { 1 };

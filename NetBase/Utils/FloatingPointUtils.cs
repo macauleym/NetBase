@@ -4,15 +4,6 @@ namespace NetBase.Utils
 {
 	public static class FloatingPointUtils
 	{
-		public static decimal Clamp(decimal value, decimal min, decimal max)
-		{
-			return (value < min) ? min : (value > max) ? max : value;
-		}
-		public static double Clamp(double value, double min, double max)
-		{
-			return (value < min) ? min : (value > max) ? max : value;
-		}
-
 		public static bool IsInteger(decimal value)
 		{
 			return value % 1 == 0;

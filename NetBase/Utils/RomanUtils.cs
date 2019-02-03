@@ -45,7 +45,7 @@ namespace NetBase.Utils
 
 			return number;
 		}
-		
+
 		public static string IntegerToRoman(int input)
 		{
 			int l = 0;
