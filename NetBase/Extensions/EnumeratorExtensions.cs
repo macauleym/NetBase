@@ -9,7 +9,7 @@ namespace NetBase.Extensions
 		public static string ItemsAppended<T>(this IEnumerable<T> enumerator, string separator = "")
 		{
 			if (separator == null)
-				throw new ArgumentNullException("separator");
+				throw new ArgumentNullException(nameof(separator));
 
 			StringBuilder sb = new StringBuilder();
 

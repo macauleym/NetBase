@@ -45,13 +45,13 @@ namespace NetBase.Utils
 					goto Continue1;
 			return false;
 
-			Continue1:
+		Continue1:
 			for (int i = 0; i < oneDigitPrimes.Length; i++)
 				if (int.Parse(s[0].ToString()) == oneDigitPrimes[i])
 					goto Continue2;
 			return false;
 
-			Continue2:
+		Continue2:
 			long b = a;
 			s = b.ToString();
 			len = s.Length;

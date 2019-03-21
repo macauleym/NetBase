@@ -32,10 +32,10 @@ namespace NetBase.Extensions
 			return Regex.Replace(s, "[^0-9 ]", ""); ;
 		}
 
-		public static bool IsRoman(this string s)
+		public static bool IsRoman(this string s, bool caseSensitive = false)
 		{
 			foreach (char c in s)
-				if (!RomanUtils.romanMap.ContainsKey(c))
+				if (!RomanUtils.romanMap.ContainsKey(caseSensitive ? c : char.ToUpper(c)))
 					return false;
 			return true;
 		}
