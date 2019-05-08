@@ -69,7 +69,7 @@ namespace NetBase.Extensions
 			{
 				return (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromString(s);
 			}
-			catch (Exception)
+			catch
 			{
 				return default(T);
 			}
