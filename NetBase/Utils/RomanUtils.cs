@@ -5,7 +5,7 @@ namespace NetBase.Utils
 {
 	public static class RomanUtils
 	{
-		public readonly static Dictionary<char, int> romanMap = new Dictionary<char, int>()
+		public static readonly Dictionary<char, int> romanMap = new Dictionary<char, int>()
 		{
 			{'I', 1},
 			{'V', 5},
@@ -16,7 +16,7 @@ namespace NetBase.Utils
 			{'M', 1000}
 		};
 
-		public readonly static Dictionary<string, int> romanMapExtended = new Dictionary<string, int>()
+		public static readonly Dictionary<string, int> romanMapExtended = new Dictionary<string, int>()
 		{
 			{"I", 1},
 			{"IV", 4},
