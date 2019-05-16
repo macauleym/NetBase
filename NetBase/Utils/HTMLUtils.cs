@@ -107,7 +107,7 @@ namespace NetBase.Utils
 				}
 			}
 
-			return lines.ItemsAppended("\n");
+			return string.Join("\n", lines);
 		}
 
 		public static string GenerateTableOfContents(string html, bool[] includeHeadings)
