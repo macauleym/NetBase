@@ -88,7 +88,7 @@ namespace NetBase.Encryption
 		{
 			int value = c;
 
-			// 65-90 == uppercase letters
+			// 65-90 == upper-case letters
 			if (value < 91 && value > 64)
 				return value - 65;
 
@@ -96,7 +96,7 @@ namespace NetBase.Encryption
 			if (value < 56 && value > 49)
 				return value - 24;
 
-			// 97-122 == lowercase letters
+			// 97-122 == lower-case letters
 			if (value < 123 && value > 96)
 				return value - 97;
 
