@@ -24,6 +24,9 @@ namespace NetBase.Utils
 		/// <returns>The random <see cref="int"/>.</returns>
 		public static int RandomInt(int minValue, int maxValue)
 		{
+			if (minValue > maxValue) // Prevent Exception from being thrown
+				return random.Next(maxValue, minValue);
+
 			return random.Next(minValue, maxValue);
 		}
 
