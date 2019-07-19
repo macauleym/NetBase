@@ -16,7 +16,7 @@ namespace NetBase.Utils
 
 		public static double Pythagoras(double a, double b)
 		{
-			return Math.Sqrt(Math.Pow(a, 2) + Math.Pow(b, 2));
+			return Math.Sqrt(a * a + b * b);
 		}
 
 		public static int Collatz(decimal input)

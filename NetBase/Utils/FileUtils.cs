@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 
 namespace NetBase.Utils
@@ -17,20 +16,20 @@ namespace NetBase.Utils
 			{
 				return GetContents(fileName, Encoding.ASCII);
 			}
-			catch (Exception)
+			catch
 			{
 				return string.Empty;
 			}
 		}
 
-		public static bool QuietDeleteDirectoryRecursively(string dir)
+		public static bool QuietDeleteDirectoryRecursively(string directory)
 		{
 			try
 			{
-				Directory.Delete(dir, true);
+				Directory.Delete(directory, true);
 				return true;
 			}
-			catch (Exception)
+			catch
 			{
 				return false;
 			}
@@ -56,19 +55,16 @@ namespace NetBase.Utils
 			if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
 				Directory.CreateDirectory(directory);
 
-			using (FileStream fout = new FileStream(fileName, FileMode.Create))
-			using (StreamWriter sout = new StreamWriter(fout, encoding))
+			using (FileStream fs = new FileStream(fileName, FileMode.Create))
+			using (StreamWriter sw = new StreamWriter(fs, encoding))
 			{
-				sout.Write(contents);
+				sw.Write(contents);
 			}
 		}
 
 		/// <summary>
-		/// Creates batch file which calls given exe with given args and pauses so errors can be observed.
+		/// Creates a batch file which calls the given executable with the given arguments and pauses so errors can be observed.
 		/// </summary>
-		/// <param name="batchFileName"></param>
-		/// <param name="exeFileName"></param>
-		/// <param name="arguments"></param>
 		public static void CreateBatchFile(string batchFileName, string exeFileName, string arguments)
 		{
 			CreateText(batchFileName, $"\"{exeFileName}\" {arguments}\npause");
@@ -81,18 +77,18 @@ namespace NetBase.Utils
 				File.Delete(path);
 				return true;
 			}
-			catch (Exception)
+			catch
 			{
 				return false;
 			}
 		}
 
-		public static void CreateDirectoryIfNotExist(string path)
+		public static void CreateDirectoryIfNotExists(string path)
 		{
-			string dir = Path.GetDirectoryName(path);
-			if (!Directory.Exists(dir))
+			string directory = Path.GetDirectoryName(path);
+			if (!Directory.Exists(directory))
 			{
-				Directory.CreateDirectory(dir);
+				Directory.CreateDirectory(directory);
 			}
 		}
 	}

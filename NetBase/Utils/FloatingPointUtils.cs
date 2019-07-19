@@ -19,7 +19,7 @@ namespace NetBase.Utils
 				return string.Empty;
 
 			string d = value.ToString();
-			return d.Substring(d.IndexOf('.') + 1);
+			return d.Substring(d.IndexOf('.') + 1); // TODO: Make culture-independent
 		}
 		public static string GetDecimals(double value)
 		{
@@ -27,22 +27,22 @@ namespace NetBase.Utils
 				return string.Empty;
 
 			string d = value.ToString();
-			return d.Substring(d.IndexOf('.') + 1);
+			return d.Substring(d.IndexOf('.') + 1); // TODO: Make culture-independent
 		}
 
 		public static int DigitAt(decimal value, int pos)
 		{
-			string d = value.ToString().Replace(".", string.Empty);
+			string d = value.ToString().Replace(".", string.Empty); // TODO: Make culture-independent
 			if (pos < 0 || pos >= d.Length)
-				throw new IndexOutOfRangeException("Index was out of range. Must be non-negative and less than the size of the string.\nParameter name: pos");
+				throw new IndexOutOfRangeException($"Index was out of range. Must be non-negative and less than the size of the string.\nParameter name: {nameof(pos)}");
 
 			return int.Parse(d[pos].ToString());
 		}
 		public static int DigitAt(double value, int pos)
 		{
-			string d = value.ToString().Replace(".", string.Empty);
+			string d = value.ToString().Replace(".", string.Empty); // TODO: Make culture-independent
 			if (pos < 0 || pos >= d.Length)
-				throw new IndexOutOfRangeException("Index was out of range. Must be non-negative and less than the size of the string.\nParameter name: pos");
+				throw new IndexOutOfRangeException($"Index was out of range. Must be non-negative and less than the size of the string.\nParameter name: {nameof(pos)}");
 
 			return int.Parse(d[pos].ToString());
 		}

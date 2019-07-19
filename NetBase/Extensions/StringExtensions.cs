@@ -24,12 +24,12 @@ namespace NetBase.Extensions
 
 		public static string Alphanumeric(this string s)
 		{
-			return Regex.Replace(s, "[^A-Za-z0-9 ]", ""); ;
+			return Regex.Replace(s, "[^A-Za-z0-9 ]", "");
 		}
 
 		public static string Numeric(this string s)
 		{
-			return Regex.Replace(s, "[^0-9 ]", ""); ;
+			return Regex.Replace(s, "[^0-9 ]", "");
 		}
 
 		public static bool IsRoman(this string s, bool caseSensitive = false)
@@ -71,7 +71,7 @@ namespace NetBase.Extensions
 			}
 			catch
 			{
-				return default(T);
+				return default;
 			}
 		}
 

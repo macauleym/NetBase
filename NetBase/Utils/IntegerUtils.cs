@@ -8,11 +8,10 @@ namespace NetBase.Utils
 		public static List<int> PowersOfTwo(int exponent)
 		{
 			List<int> list = new List<int> { 1 };
-			int count = list.Count;
 
 			for (int i = 1; i <= exponent; i++)
 			{
-				count = list.Count;
+				int count = list.Count;
 				for (int j = count - 1; j >= 0; j--)
 				{
 					if (list[j] >= 5)
@@ -20,7 +19,7 @@ namespace NetBase.Utils
 						list[j] -= 10 - list[j];
 						if (j >= count - 1)
 							list.Add(0);
-						list[j + 1] += 1;
+						list[j + 1]++;
 					}
 					else list[j] *= 2;
 				}
@@ -149,7 +148,7 @@ namespace NetBase.Utils
 		{
 			string d = value.ToString();
 			if (pos < 0 || pos >= d.Length)
-				throw new IndexOutOfRangeException("Index was out of range. Must be non-negative and less than the size of the string.\nParameter name: pos");
+				throw new IndexOutOfRangeException($"Index was out of range. Must be non-negative and less than the size of the string.\nParameter name: {nameof(pos)}");
 
 			return int.Parse(d[pos].ToString());
 		}

@@ -50,11 +50,13 @@ namespace NetBase.Utils
 		{
 			int l = 0;
 			for (int i = input; i > 0; i--)
+			{
 				if (romanMapExtended.ContainsValue(i))
 				{
 					l = i;
 					break;
 				}
+			}
 
 			if (input == l)
 				return romanMapExtended.FirstOrDefault(x => x.Value == input).Key;
