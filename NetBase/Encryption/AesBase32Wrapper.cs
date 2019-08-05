@@ -24,7 +24,7 @@ namespace NetBase.Encryption
 
 		public string EncryptAndEncode(string inputRaw)
 		{
-			// The raw input is in UTF-8 format
+			// The raw input is in UTF-8 format.
 			byte[] buffer = Encoding.UTF8.GetBytes(inputRaw);
 
 			using (AesCryptoServiceProvider csp = new AesCryptoServiceProvider())
@@ -32,14 +32,14 @@ namespace NetBase.Encryption
 				ICryptoTransform encryptor = GetCryptoTransform(csp, TransformType.Encrypt);
 				byte[] encrypted = encryptor.TransformFinalBlock(buffer, 0, buffer.Length);
 
-				// The encrypted output is in Base32 format
+				// The encrypted output is in Base32 format.
 				return Base32Encoding.ToString(encrypted);
 			}
 		}
 
 		public string DecodeAndDecrypt(string inputEncrypted)
 		{
-			// The encrypted input is in Base32 format
+			// The encrypted input is in Base32 format.
 			byte[] buffer = Base32Encoding.ToBytes(inputEncrypted);
 
 			using (AesCryptoServiceProvider csp = new AesCryptoServiceProvider())
@@ -47,7 +47,7 @@ namespace NetBase.Encryption
 				ICryptoTransform decryptor = GetCryptoTransform(csp, TransformType.Decrypt);
 				byte[] decrypted = decryptor.TransformFinalBlock(buffer, 0, buffer.Length);
 
-				// The decrypted output is in UTF-8 format
+				// The decrypted output is in UTF-8 format.
 				return Encoding.UTF8.GetString(decrypted);
 			}
 		}

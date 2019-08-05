@@ -12,8 +12,8 @@ namespace NetBase.Encryption
 			if (string.IsNullOrEmpty(input))
 				throw new ArgumentNullException("input");
 
-			input = input.TrimEnd('='); // Remove padding characters
-			int byteCount = input.Length * 5 / 8; // This must be TRUNCATED
+			input = input.TrimEnd('='); // Remove padding characters.
+			int byteCount = input.Length * 5 / 8; // This must be truncated.
 			byte[] returnArray = new byte[byteCount];
 
 			byte curByte = 0, bitsRemaining = 8;
@@ -39,7 +39,7 @@ namespace NetBase.Encryption
 				}
 			}
 
-			// If we didn't end with a full byte
+			// If we didn't end with a full byte.
 			if (arrayIndex != byteCount)
 				returnArray[arrayIndex] = curByte;
 
@@ -73,7 +73,7 @@ namespace NetBase.Encryption
 				nextChar = (byte)((b << bitsRemaining) & 31);
 			}
 
-			// If we didn't end with a full char
+			// If we didn't end with a full char.
 			if (arrayIndex != charCount)
 			{
 				returnArray[arrayIndex++] = ValueToChar(nextChar);
