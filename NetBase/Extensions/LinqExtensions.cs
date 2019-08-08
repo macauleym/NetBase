@@ -6,10 +6,10 @@ namespace NetBase.Extensions
 {
 	public static class LinqExtensions
 	{
-		public static IQueryable<T> OrderByField<T>(this IQueryable<T> query, string propertyName, bool ascending)
+		public static IQueryable<T> OrderByMember<T>(this IQueryable<T> query, string memberName, bool ascending)
 		{
 			ParameterExpression parameter = Expression.Parameter(typeof(T), "p");
-			MemberExpression property = Expression.Property(parameter, propertyName);
+			MemberExpression property = Expression.Property(parameter, memberName);
 			LambdaExpression expression = Expression.Lambda(property, parameter);
 			Type[] types = new Type[] { query.ElementType, expression.Body.Type };
 
