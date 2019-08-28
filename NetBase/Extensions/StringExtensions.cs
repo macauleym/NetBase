@@ -23,12 +23,12 @@ namespace NetBase.Extensions
 
 		public static string Alphanumeric(this string s)
 		{
-			return Regex.Replace(s, "[^A-Za-z0-9 ]", "");
+			return Regex.Replace(s, "[^A-Za-z0-9 ]", ""); // Letters (both uppercase and lowercase), numbers, and space.
 		}
 
 		public static string Numeric(this string s)
 		{
-			return Regex.Replace(s, "[^0-9 ]", "");
+			return Regex.Replace(s, "[^0-9]", "");
 		}
 
 		public static string RemoveSubstring(this string s, string from, string to)
@@ -125,22 +125,22 @@ namespace NetBase.Extensions
 			}
 		}
 
-		public static string ChopOffAfter(this string str, int count, string substr)
+		public static string ChopOffAfter(this string s, int count, string substr)
 		{
-			return str.Substring(0, RepeatedIndexOf(str, count, substr) + 1);
+			return s.Substring(0, RepeatedIndexOf(s, count, substr) + 1);
 		}
 
-		public static string ChopOffAt(this string str, int count, string substr)
+		public static string ChopOffAt(this string s, int count, string substr)
 		{
-			return str.Substring(0, RepeatedIndexOf(str, count, substr));
+			return s.Substring(0, RepeatedIndexOf(s, count, substr));
 		}
 
-		private static int RepeatedIndexOf(string str, int count, string substr)
+		private static int RepeatedIndexOf(string s, int count, string substr)
 		{
 			int index = 0;
 			do
 			{
-				index = str.IndexOf(substr, index);
+				index = s.IndexOf(substr, index);
 				if (index < 0)
 					return index;
 				index++;
@@ -151,14 +151,14 @@ namespace NetBase.Extensions
 			return index - 1;
 		}
 
-		public static int CountOccurrences(this string str, char occurrence)
+		public static int CountOccurrences(this string s, char occurrence)
 		{
-			return str.Split(occurrence).Length - 1;
+			return s.Split(occurrence).Length - 1;
 		}
 
-		public static int CountOccurrences(this string str, string occurrence)
+		public static int CountOccurrences(this string s, string occurrence)
 		{
-			return (str.Length - str.Replace(occurrence, string.Empty).Length) / occurrence.Length;
+			return (s.Length - s.Replace(occurrence, string.Empty).Length) / occurrence.Length;
 		}
 	}
 }
