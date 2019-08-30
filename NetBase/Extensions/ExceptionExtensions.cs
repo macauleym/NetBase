@@ -5,16 +5,14 @@ namespace NetBase.Extensions
 {
 	public static class ExceptionExtensions
 	{
-		public static string AllInnerExceptionMessages(this Exception exception, string separator = "")
+		public static string AllInnerExceptionMessages(this Exception exception, int depth = 1)
 		{
-			if (separator == null)
-				throw new ArgumentNullException(nameof(separator));
-
 			StringBuilder sb = new StringBuilder(exception.Message);
 			if (exception.InnerException != null)
 			{
-				sb.AppendLine(exception.AllInnerExceptionMessages());
-				sb.AppendLine(separator);
+				sb.Append("\n");
+				sb.Append("\t".Repeat(depth));
+				sb.Append(exception.InnerException.AllInnerExceptionMessages(++depth));
 			}
 			return sb.ToString();
 		}
