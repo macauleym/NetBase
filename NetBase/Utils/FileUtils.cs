@@ -5,33 +5,41 @@ namespace NetBase.Utils
 {
 	public static class FileUtils
 	{
-		public static string GetContents(string fileName)
-		{
-			return GetContents(fileName, Encoding.ASCII);
-		}
-
-		public static string QuietGetContents(string fileName)
+		public static bool QuietDeleteDirectory(string directory, bool recursive)
 		{
 			try
 			{
-				return GetContents(fileName, Encoding.ASCII);
-			}
-			catch
-			{
-				return string.Empty;
-			}
-		}
-
-		public static bool QuietDeleteDirectoryRecursively(string directory)
-		{
-			try
-			{
-				Directory.Delete(directory, true);
+				Directory.Delete(directory, recursive);
 				return true;
 			}
 			catch
 			{
 				return false;
+			}
+		}
+
+		public static bool QuietDeleteFile(string path)
+		{
+			try
+			{
+				File.Delete(path);
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
+
+		public static string QuietGetContents(string fileName, Encoding encoding)
+		{
+			try
+			{
+				return GetContents(fileName, encoding);
+			}
+			catch
+			{
+				return string.Empty;
 			}
 		}
 
@@ -42,11 +50,6 @@ namespace NetBase.Utils
 			{
 				return sin.ReadToEnd();
 			}
-		}
-
-		public static void CreateText(string fileName, string contents)
-		{
-			CreateText(fileName, contents, Encoding.Default);
 		}
 
 		public static void CreateText(string fileName, string contents, Encoding encoding)
@@ -67,20 +70,7 @@ namespace NetBase.Utils
 		/// </summary>
 		public static void CreateBatchFile(string batchFileName, string exeFileName, string arguments)
 		{
-			CreateText(batchFileName, $"\"{exeFileName}\" {arguments}\npause");
-		}
-
-		public static bool QuietDeleteFile(string path)
-		{
-			try
-			{
-				File.Delete(path);
-				return true;
-			}
-			catch
-			{
-				return false;
-			}
+			CreateText(batchFileName, $"\"{exeFileName}\" {arguments}\npause", Encoding.Default);
 		}
 
 		public static void CreateDirectoryIfNotExists(string path)
