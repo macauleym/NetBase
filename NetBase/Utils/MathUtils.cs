@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace NetBase.Utils
 {
@@ -12,6 +13,16 @@ namespace NetBase.Utils
 		public static T Clamp<T>(T value, T min, T max) where T : IComparable<T>
 		{
 			return (value.CompareTo(min) < 0) ? min : (value.CompareTo(max) > 0) ? max : value;
+		}
+
+		public static T Min<T>(params T[] values)
+		{
+			return values.Min();
+		}
+
+		public static T Max<T>(params T[] values)
+		{
+			return values.Max();
 		}
 	}
 }
