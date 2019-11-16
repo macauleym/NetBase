@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace NetBase.Utils
@@ -48,6 +49,16 @@ namespace NetBase.Utils
 					return member;
 
 			throw new Exception($"Member {memberName} not found in type {typeof(T)}");
+		}
+
+		public static Type[] GetInstantiableTypesFromNamespace(Assembly assembly, string @namespace)
+		{
+			return assembly
+				.GetTypes()
+				.Where(t =>
+					t.Namespace.StartsWith(@namespace) &&
+					!t.IsAbstract)
+				.ToArray();
 		}
 	}
 }
